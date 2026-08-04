@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData(
-    primaryColor: AppColors.primaryColor,
-    scaffoldBackgroundColor: AppColors.white,
+    primaryColor: AppColors.Textblack,
+    scaffoldBackgroundColor: AppColors.primaryColor,
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.primaryColor,
       elevation: 0,
     ),
   );
   static final darkTheme = ThemeData(
     primaryColor: AppColors.primaryColor,
-    scaffoldBackgroundColor: AppColors.black,
+    scaffoldBackgroundColor: AppColors.Textblack,
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.black,
+      backgroundColor: AppColors.Textblack,
       elevation: 0,
     ),
   );
