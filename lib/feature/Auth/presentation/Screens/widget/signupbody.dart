@@ -1,10 +1,13 @@
 import 'package:ecommerce/cores/appvalidator.dart';
 import 'package:ecommerce/cores/utiles/app_colors.dart';
 import 'package:ecommerce/cores/utiles/app_styleText.dart';
-import 'package:ecommerce/cores/widgets/CustomButton.dart';
+import 'package:ecommerce/feature/Auth/domain/entities/userentityreq.dart';
 import 'package:ecommerce/feature/Auth/presentation/Screens/signin.dart';
+import 'package:ecommerce/feature/Auth/presentation/Screens/widget/Signupblocconsumer.dart';
 import 'package:ecommerce/feature/Auth/presentation/Screens/widget/custometextformfeild.dart';
+import 'package:ecommerce/feature/Auth/presentation/cubit/register_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Signupbody extends StatefulWidget {
@@ -16,6 +19,16 @@ class Signupbody extends StatefulWidget {
 }
 
 class _SignupbodyState extends State<Signupbody> {
+  @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    repasswordController.dispose();
+    phoneController.dispose();
+  }
+
   final formKey = GlobalKey<FormState>();
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
@@ -23,6 +36,8 @@ class _SignupbodyState extends State<Signupbody> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repasswordController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
   bool agree = false;
 
@@ -60,6 +75,29 @@ class _SignupbodyState extends State<Signupbody> {
                 validator: AppValidators.validatePassword,
                 isPassword: true,
                 isobscureText: true,
+              ),
+
+              SizedBox(height: 16.h),
+
+              Custometextformfeild(
+                hinttext: "تأكيد كلمة المرور",
+                textEditingController: repasswordController,
+                validator: (value) {
+                  return AppValidators.validateConfirmPassword(
+                    value,
+                    passwordController.text,
+                  );
+                },
+                isPassword: true,
+                isobscureText: true,
+              ),
+
+              SizedBox(height: 16.h),
+
+              Custometextformfeild(
+                hinttext: "رقم الهاتف",
+                textEditingController: phoneController,
+                validator: AppValidators.validatePhoneNumber,
               ),
 
               SizedBox(height: 12.h),
@@ -102,14 +140,11 @@ class _SignupbodyState extends State<Signupbody> {
               ),
 
               SizedBox(height: 20.h),
-
-              CustomButton(
-                title: "إنشاء حساب جديد",
-                onPressed: () {
+              Signupblocconsumer(
+                onpressed: () {
                   setState(() {
                     autovalidateMode = AutovalidateMode.always;
                   });
-
                   if (!formKey.currentState!.validate()) {
                     return;
                   }
@@ -123,10 +158,17 @@ class _SignupbodyState extends State<Signupbody> {
                     return;
                   }
 
-                  // Register
+                  context.read<RegisterCubit>().register(
+                    Userentityreq(
+                      name: nameController.text,
+                      email: emailController.text,
+                      phone: phoneController.text,
+                      password: passwordController.text,
+                      repassword: repasswordController.text,
+                    ),
+                  );
                 },
               ),
-
               SizedBox(height: 20.h),
 
               Row(
