@@ -1,4 +1,4 @@
-abstract class DatabaseservceApi {
+abstract class Databaseservce {
   Future<dynamic> getData({required String endpoints, String? token});
   Future<dynamic> addData({
     required String endpoints,

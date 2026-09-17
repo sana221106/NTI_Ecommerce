@@ -9,6 +9,22 @@ class AppStyletext {
     fontWeight: FontWeight.w700,
     color: AppColors.Textblack,
   );
+  static TextStyle Bold24 = GoogleFonts.cairo(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.Textblack,
+  );
+  static TextStyle Bold16 = GoogleFonts.cairo(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.Textblack,
+  );
+  static TextStyle Bold18 = GoogleFonts.cairo(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.Textblack,
+    height: 1.3,
+  );
   static TextStyle Bold13 = GoogleFonts.cairo(
     fontSize: 13.sp,
     fontWeight: FontWeight.w700,
@@ -24,9 +40,30 @@ class AppStyletext {
     fontWeight: FontWeight.w600,
     color: AppColors.grayhinttext,
   );
+  static TextStyle normal16 = GoogleFonts.cairo(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grayhinttext,
+  );
+  static TextStyle normal15 = GoogleFonts.cairo(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grayhinttext,
+    height: 1.4,
+  );
   static TextStyle SemiBold13 = GoogleFonts.cairo(
     fontSize: 13.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.grayhinttext,
+  );
+  static TextStyle normal14 = GoogleFonts.cairo(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grayhinttext,
+  );
+  static TextStyle regular11 = GoogleFonts.cairo(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.yellowPrice,
   );
 }
